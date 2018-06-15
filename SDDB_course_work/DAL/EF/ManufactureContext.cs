@@ -9,7 +9,7 @@ namespace DAL.EF
 
         static ManufactureContext()
         {
-            Database.SetInitializer<ManufactureContext>(new ManufactureInitializer());
+            System.Data.Entity.Database.SetInitializer<ManufactureContext>(new ManufactureInitializer());
         }
 
         public ManufactureContext(string connectionString) : base(connectionString)

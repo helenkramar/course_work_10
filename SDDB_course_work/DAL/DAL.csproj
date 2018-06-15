@@ -48,8 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EF\CafeContext.cs" />
+    <Compile Include="EF\CafeInitializer.cs" />
     <Compile Include="EF\ManufactureContext.cs" />
     <Compile Include="EF\ManufactureInitializer.cs" />
+    <Compile Include="Entities\ConnectionDetails.cs" />
+    <Compile Include="Entities\Database.cs" />
     <Compile Include="Entities\Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
