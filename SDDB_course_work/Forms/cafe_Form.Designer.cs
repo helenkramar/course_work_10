@@ -28,12 +28,69 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.cafe_dataGrid = new System.Windows.Forms.DataGridView();
+            this.sell_button = new System.Windows.Forms.Button();
+            this.positionsName_comboBox = new System.Windows.Forms.ComboBox();
+            this.positionsAmount_textBox = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.cafe_dataGrid)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // cafe_dataGrid
+            // 
+            this.cafe_dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cafe_dataGrid.Location = new System.Drawing.Point(13, 13);
+            this.cafe_dataGrid.Name = "cafe_dataGrid";
+            this.cafe_dataGrid.Size = new System.Drawing.Size(398, 253);
+            this.cafe_dataGrid.TabIndex = 0;
+            // 
+            // sell_button
+            // 
+            this.sell_button.Location = new System.Drawing.Point(13, 336);
+            this.sell_button.Name = "sell_button";
+            this.sell_button.Size = new System.Drawing.Size(75, 23);
+            this.sell_button.TabIndex = 1;
+            this.sell_button.Text = "Sell";
+            this.sell_button.UseVisualStyleBackColor = true;
+            this.sell_button.Click += new System.EventHandler(this.sell_button_Click);
+            // 
+            // positionsName_comboBox
+            // 
+            this.positionsName_comboBox.FormattingEnabled = true;
+            this.positionsName_comboBox.Location = new System.Drawing.Point(12, 286);
+            this.positionsName_comboBox.Name = "positionsName_comboBox";
+            this.positionsName_comboBox.Size = new System.Drawing.Size(121, 21);
+            this.positionsName_comboBox.TabIndex = 2;
+            // 
+            // positionsAmount_textBox
+            // 
+            this.positionsAmount_textBox.Location = new System.Drawing.Point(153, 286);
+            this.positionsAmount_textBox.Name = "positionsAmount_textBox";
+            this.positionsAmount_textBox.Size = new System.Drawing.Size(100, 20);
+            this.positionsAmount_textBox.TabIndex = 3;
+            // 
+            // cafe_Form
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "cafe_Form";
+            this.ClientSize = new System.Drawing.Size(427, 384);
+            this.Controls.Add(this.positionsAmount_textBox);
+            this.Controls.Add(this.positionsName_comboBox);
+            this.Controls.Add(this.sell_button);
+            this.Controls.Add(this.cafe_dataGrid);
+            this.Name = "cafe_Form";
+            this.Text = "Cafe";
+            this.Load += new System.EventHandler(this.cafe_Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.cafe_dataGrid)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView cafe_dataGrid;
+        private System.Windows.Forms.Button sell_button;
+        private System.Windows.Forms.ComboBox positionsName_comboBox;
+        private System.Windows.Forms.TextBox positionsAmount_textBox;
     }
 }

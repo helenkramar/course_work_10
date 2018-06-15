@@ -65,6 +65,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="cafe_Form.resx">
+      <DependentUpon>cafe_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="main_Form.resx">
       <DependentUpon>main_Form.cs</DependentUpon>
     </EmbeddedResource>
