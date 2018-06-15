@@ -9,5 +9,7 @@ namespace DAL.Entities
         public string Name { get; set; }
         [Range(0, 100)]
         public int Amount { get; set; }
+        [Range(0, 100)]
+        public double Cost { get; set; }
     }
 }
