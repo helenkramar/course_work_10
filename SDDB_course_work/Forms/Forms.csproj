@@ -58,6 +58,7 @@
     <Compile Include="cafe_Form.Designer.cs">
       <DependentUpon>cafe_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ManufactureController.cs" />
     <Compile Include="main_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="main_Form.resx">
       <DependentUpon>main_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="manufacture_Form.resx">
+      <DependentUpon>manufacture_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

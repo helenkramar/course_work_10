@@ -53,6 +53,7 @@
     <Compile Include="EF\ManufactureInitializer.cs" />
     <Compile Include="Entities\ConnectionDetails.cs" />
     <Compile Include="Entities\Database.cs" />
+    <Compile Include="Entities\Desserts.cs" />
     <Compile Include="Entities\Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -60,6 +61,8 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

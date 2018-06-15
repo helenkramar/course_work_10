@@ -16,7 +16,8 @@ namespace Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new main_Form());
+            //Application.Run(new main_Form());
+            Application.Run(new manufacture_Form());
         }
     }
 }
