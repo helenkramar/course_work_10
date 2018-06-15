@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Forms
@@ -15,6 +8,17 @@ namespace Forms
         public main_Form()
         {
             InitializeComponent();
+        }
+
+        private void cafe_button_Click(object sender, EventArgs e)
+        {
+            new cafe_Form().Show();
+        }
+
+        private void manufacture_button_Click(object sender, EventArgs e)
+        {
+            new manufacture_Form().Show();
+
         }
     }
 }
