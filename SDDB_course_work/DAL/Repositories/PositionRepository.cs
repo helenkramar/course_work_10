@@ -42,8 +42,6 @@ namespace DAL.Repositories
             return item;
         }
 
-
-
         //public async Task<Position> CreateAsync(Position item)
         //	=> (await context.Positions.AddAsync(item)).Entity;
 

@@ -5,19 +5,14 @@ namespace DAL.Entities
 {
     public class ConnectionDetails
     {
-		[ForeignKey(nameof(DataBase)),
-			DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        [ForeignKey(nameof(DataBase))]
 		public int Id { get; set; }
 
 		public string Host { get; set; }
 		public string DatabaseName { get; set; }
 		public bool IntegratedSecurity { get; set; }
 
-
-        //[Key]
-        //[ForeignKey("ConnectionDeatils")]
-        //public int Id { get; set; }
-
-        //public virtual Database Database { get; set; }
+        public virtual DataBase DataBase { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace DAL.EF
 
         //static PositionContext()
         //{
-        //    System.Data.Entity.Database.SetInitializer<PositionContext>(new PositionInitializer());
+        //    System.Data.Entity.DataBase.SetInitializer<PositionContext>(new PositionInitializer());
         //}
 
         public PositionContext(string connectionString) : base(connectionString)

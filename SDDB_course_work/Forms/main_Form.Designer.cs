@@ -61,6 +61,7 @@
             this.Controls.Add(this.cafe_button);
             this.Name = "main_Form";
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.main_Form_Load);
             this.ResumeLayout(false);
 
         }
