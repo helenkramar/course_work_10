@@ -11,7 +11,7 @@ namespace Forms.Controllers
     {
         public static List<Position> GetPositions(this ManufactureContext context)
         {
-            return context.Positions.Local.ToList();
+            return context.Positions.ToList();
         }
 
         public static List<string> GetDesserts()

@@ -17,15 +17,12 @@ namespace Forms
 
         private void LoadGrid()
         {
-            cafe_dataGrid.DataSource = null;
-            cafe_dataGrid.Rows.Clear();
-            cafe_dataGrid.Refresh();
             cafe_dataGrid.DataSource = CafeController.GetPositions(cafeContext);
         }
 
         private void cafe_Form_Load(object sender, System.EventArgs e)
         {
-            cafe_dataGrid.DataSource = CafeController.GetPositions(cafeContext);
+            LoadGrid();
 
             this.cafe_dataGrid.SelectionChanged += new System.EventHandler(this.cafe_dataGrid_SelectionChanged);
         }

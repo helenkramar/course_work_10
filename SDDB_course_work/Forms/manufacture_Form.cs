@@ -17,15 +17,12 @@ namespace Forms
 
         private void LoadGrid()
         {
-            manufacture_dataGrid.DataSource = null;
-            manufacture_dataGrid.Rows.Clear();
-            manufacture_dataGrid.Refresh();
             manufacture_dataGrid.DataSource = ManufactureController.GetPositions(manufactureContext);
         }
 
         private void manufacture_Form_Load(object sender, System.EventArgs e)
         {
-            manufacture_dataGrid.DataSource = ManufactureController.GetPositions(manufactureContext);
+            LoadGrid();
 
             this.manufacture_dataGrid.SelectionChanged += new System.EventHandler(this.manufacture_dataGrid_SelectionChanged);
 

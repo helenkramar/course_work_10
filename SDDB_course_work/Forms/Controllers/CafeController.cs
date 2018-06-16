@@ -11,7 +11,7 @@ namespace Forms.Controllers
     {
         public static List<Position> GetPositions(this CafeContext context)
         {
-            return context.Positions.Local.ToList();
+            return context.Positions.ToList();
         }
 
         public static void Admission(this CafeContext context, Position position)

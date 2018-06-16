@@ -56,7 +56,7 @@
             // 
             // positionsAmount_textBox
             // 
-            this.positionsAmount_textBox.Location = new System.Drawing.Point(153, 286);
+            this.positionsAmount_textBox.Location = new System.Drawing.Point(141, 286);
             this.positionsAmount_textBox.Name = "positionsAmount_textBox";
             this.positionsAmount_textBox.Size = new System.Drawing.Size(100, 20);
             this.positionsAmount_textBox.TabIndex = 3;
