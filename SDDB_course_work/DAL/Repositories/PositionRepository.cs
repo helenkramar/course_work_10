@@ -21,8 +21,16 @@ namespace DAL.Repositories
         public async Task<Position> GetAsync(int id)
             => await context.Positions.FindAsync(id);
 
+        public Position Get(int id)
+            => context.Positions.Find(id);
+
+
         public async Task<IEnumerable<Position>> FindAsync(Expression<Func<Position, bool>> predicate)
             => await context.Positions.Where(predicate).ToListAsync();
+
+        public  IEnumerable<Position> Find(Expression<Func<Position, bool>> predicate)
+            =>  context.Positions.Where(predicate).ToList();
+
 
         public async Task<Position> CreateAsync(Position item)
         {
@@ -51,13 +59,19 @@ namespace DAL.Repositories
             
         }
 
+        public Position Create(Position item)
+        { throw new NotImplementedException(); }
+
         //public async Task<Position> CreateAsync(Position item)
         //	=> (await context.Positions.AddAsync(item)).Entity;
+
+        public async void UpdateAsync(Position item)
+        { throw new NotImplementedException(); }
 
         public void Update(Position item)
         { throw new NotImplementedException(); }//=> context.Positions.Update(item);
 
-		public async void Remove(int id)
+		public async void RemoveAsync(int id)
 		{
 			var entity = await context.Positions.FindAsync(id);
 			if (entity != null)
@@ -65,5 +79,10 @@ namespace DAL.Repositories
 				context.Positions.Remove(entity);
 			}			
 		}
-	}
+
+        public void Remove(int id)
+        { throw new NotImplementedException(); }
+
+
+    }
 }
