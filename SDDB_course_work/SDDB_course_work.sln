@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{B0032BBB-631F-4B84-9298-ADDBD81038E8}"
 EndProject
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forms", "Forms\Forms.csproj", "{40CE2AFE-D0FA-4B33-8311-F65018DC7269}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL1", "BLL\BLL1.csproj", "{8749AD01-7DCE-4350-B33B-38B74228C689}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{95C94EB7-40C8-4CF0-A7E3-136EF6E61D28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{40CE2AFE-D0FA-4B33-8311-F65018DC7269}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40CE2AFE-D0FA-4B33-8311-F65018DC7269}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40CE2AFE-D0FA-4B33-8311-F65018DC7269}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8749AD01-7DCE-4350-B33B-38B74228C689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8749AD01-7DCE-4350-B33B-38B74228C689}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8749AD01-7DCE-4350-B33B-38B74228C689}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8749AD01-7DCE-4350-B33B-38B74228C689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95C94EB7-40C8-4CF0-A7E3-136EF6E61D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95C94EB7-40C8-4CF0-A7E3-136EF6E61D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95C94EB7-40C8-4CF0-A7E3-136EF6E61D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95C94EB7-40C8-4CF0-A7E3-136EF6E61D28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
