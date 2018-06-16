@@ -6,7 +6,7 @@ namespace DAL.EF
     {
         protected override void Seed(CafeContext db)
         {
-            db.SaveChanges();
+            //db.SaveChanges();
         }
     }
 }

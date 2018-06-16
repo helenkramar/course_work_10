@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Forms
@@ -16,8 +13,7 @@ namespace Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new main_Form());
-            Application.Run(new manufacture_Form());
+            Application.Run(new main_Form());
         }
     }
 }

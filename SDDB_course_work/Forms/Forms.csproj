@@ -58,6 +58,7 @@
     <Compile Include="cafe_Form.Designer.cs">
       <DependentUpon>cafe_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CafeController.cs" />
     <Compile Include="Controllers\ManufactureController.cs" />
     <Compile Include="main_Form.cs">
       <SubType>Form</SubType>

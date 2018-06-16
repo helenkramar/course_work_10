@@ -9,18 +9,6 @@ namespace Forms.Controllers
 {
     public static class ManufactureController
     {
-        public static void Initialize(this ManufactureContext context)
-        {
-            // mock
-            Position first = new Position { Name = Desserts.cake.ToString(), Amount = 4, Cost = 2.3 };
-            Position second = new Position { Name = Desserts.cookie.ToString(), Amount = 14, Cost = 3.5 };
-            Position third = new Position { Name = Desserts.candy.ToString(), Amount = 40, Cost = 2.7 };
-
-            List<Position> listPosition = new List<Position> { first, second, third };
-            context.Positions.AddRange(listPosition);
-            //
-        }
-
         public static List<Position> GetPositions(this ManufactureContext context)
         {
             return context.Positions.Local.ToList();
@@ -57,6 +45,20 @@ namespace Forms.Controllers
         }
 
         public static void SendPositions(this ManufactureContext context, string name, int amount, double cost)
+        {
+            WriteOff(context, name, amount, cost);
+           
+            var cafeContext = new CafeContext("CafeContext");
+
+            cafeContext.Admission(new Position()
+            {
+                Name = name,
+                Amount = amount,
+                Cost = cost
+            });
+        }
+
+        private static void WriteOff(ManufactureContext context, string name, int amount, double cost)
         {
             if (amount <= 0)
                 throw new ArgumentOutOfRangeException("Amount above 0!");
