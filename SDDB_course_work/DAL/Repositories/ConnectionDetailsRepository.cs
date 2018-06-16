@@ -20,10 +20,16 @@ namespace DAL.Repositories
 		public async Task<ConnectionDetails> GetAsync(int id)
 			=> await context.ConnectionDetails.FindAsync(id);
 
-		public async Task<IEnumerable<ConnectionDetails>> FindAsync(Expression<Func<ConnectionDetails, bool>> predicate)
+        public ConnectionDetails Get(int id)
+            => context.ConnectionDetails.Find(id);
+
+        public async Task<IEnumerable<ConnectionDetails>> FindAsync(Expression<Func<ConnectionDetails, bool>> predicate)
 			=> await context.ConnectionDetails.Where(predicate).ToListAsync();
 
-		public async Task<ConnectionDetails> CreateAsync(ConnectionDetails item)
+        public IEnumerable<ConnectionDetails> Find(Expression<Func<ConnectionDetails, bool>> predicate)
+            => context.ConnectionDetails.Where(predicate).ToList();
+
+        public async Task<ConnectionDetails> CreateAsync(ConnectionDetails item)
         //=> (await context.ConnectionDetails.AddAsync(item)).Entity;
         {
             //var db = await context.ConnectionDetails.FirstOrDefaultAsync(p => p.Id.Equals(item.Id));
@@ -43,10 +49,15 @@ namespace DAL.Repositories
             return res;
         }
 
+        public ConnectionDetails Create(ConnectionDetails item)
+        { throw new NotImplementedException(); }
+
+        public async void UpdateAsync(ConnectionDetails item)
+        { throw new NotImplementedException(); }
         public void Update(ConnectionDetails item)// => context.ConnectionDetails.Update(item);
         { throw new NotImplementedException(); }
 
-        public async void Remove(int id)
+        public async void RemoveAsync(int id)
 		{
 			var entity = await context.ConnectionDetails.FindAsync(id);
 			if (entity != null)
@@ -54,5 +65,8 @@ namespace DAL.Repositories
 				context.ConnectionDetails.Remove(entity);
 			}
 		}
-	}
+        public  void Remove(int id)
+        { throw new NotImplementedException(); }
+
+    }
 }

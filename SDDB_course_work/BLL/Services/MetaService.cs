@@ -19,5 +19,8 @@ namespace BLL.Services
 
 		public async Task<IEnumerable<DataBase>> GetAllAsync() =>
 			await uow.DatabaseRepository.FindAsync(db => true);
-	}
+
+        public IEnumerable<DataBase> GetAll() =>
+             uow.DatabaseRepository.Find(db => true);
+    }
 }

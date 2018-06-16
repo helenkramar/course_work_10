@@ -28,5 +28,6 @@ namespace DAL.Repositories
 		public IRepository<ConnectionDetails> ConnectionDetailsRepository { get; }
 
 		public async Task SaveAsync() => await context.SaveChangesAsync();
-	}
+        public void Save() => context.SaveChanges();
+    }
 }

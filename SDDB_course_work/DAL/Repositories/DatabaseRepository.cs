@@ -21,10 +21,16 @@ namespace DAL.Repositories
 		public async Task<DataBase> GetAsync(int id)
 			=> await context.DataBases.FindAsync(id);
 
-		public async Task<IEnumerable<DataBase>> FindAsync(Expression<Func<DataBase, bool>> predicate)
+        public DataBase Get(int id)
+            => context.DataBases.Find(id);
+
+        public async Task<IEnumerable<DataBase>> FindAsync(Expression<Func<DataBase, bool>> predicate)
 			=> await context.DataBases.Where(predicate).ToListAsync();
 
-		public async Task<DataBase> CreateAsync(DataBase item)
+        public IEnumerable<DataBase> Find(Expression<Func<DataBase, bool>> predicate)
+            =>  context.DataBases.Where(predicate).ToList();
+
+        public async Task<DataBase> CreateAsync(DataBase item)
         //=> (await context.DataBases.AddAsync(item)).Entity;
         {
             //var db = await context.Databases.FirstOrDefaultAsync(p => p.Name.Equals(item.Name));
@@ -43,11 +49,17 @@ namespace DAL.Repositories
 
             return res;
         }
+        public DataBase Create(DataBase item)
+        { throw new NotImplementedException(); }
 
-		public void Update(DataBase item)
+
+        public async void UpdateAsync(DataBase item)
         { throw new NotImplementedException(); }//=> context.DataBases.Update(item);
 
-        public async void Remove(int id)
+        public void Update(DataBase item)
+        { throw new NotImplementedException(); }//=> context.DataBases.Update(item);
+
+        public async void RemoveAsync(int id)
 		{
 			var entity = await context.DataBases.FindAsync(id);
 			if (entity != null)
@@ -55,5 +67,14 @@ namespace DAL.Repositories
 				context.DataBases.Remove(entity);
 			}
 		}
-	}
+
+        public  void Remove(int id)
+        {
+            var entity = context.DataBases.Find(id);
+            if (entity != null)
+            {
+                context.DataBases.Remove(entity);
+            }
+        }
+    }
 }

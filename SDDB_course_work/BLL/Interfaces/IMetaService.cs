@@ -8,5 +8,6 @@ namespace BLL.Interfaces
 	public interface IMetaService
 	{
 		Task<IEnumerable<DataBase>> GetAllAsync();
-	}
+        IEnumerable<DataBase> GetAll();
+    }
 }

@@ -10,5 +10,6 @@ namespace DAL.Interfaces
 		IRepository<ConnectionDetails> ConnectionDetailsRepository { get; }
 
 		Task SaveAsync();
-	}
+        void Save();
+    }
 }
