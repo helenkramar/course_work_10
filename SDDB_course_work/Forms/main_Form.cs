@@ -24,7 +24,6 @@ namespace Forms
         private void manufacture_button_Click(object sender, EventArgs e)
         {
             new manufacture_Form().Show();
-
         }
 
         private void main_Form_Load(object sender, EventArgs e)

@@ -36,7 +36,7 @@ namespace DAL.Repositories
             //return item;
 
             var res = await Task.Factory.StartNew(() => {
-                context.Databases.Add(item);
+                context.DataBases.Add(item);
                 context.SaveChanges();
                 return item;
             });

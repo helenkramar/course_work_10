@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using DAL.EF;
 using Forms.Controllers;
+
+using DAL.EF;
 
 namespace Forms
 {
@@ -32,7 +33,6 @@ namespace Forms
             int index = 1;
             positionsName_comboBox.SelectedIndex = index;
             positionsName_comboBox.DisplayMember = desserts[index];
-            //positionsName_comboBox.ValueMember = desserts[index];
         }
 
         private void send_button_Click(object sender, EventArgs e)
