@@ -15,13 +15,18 @@ namespace DAL.Repositories
 	{
 		private readonly MetaContext context;
 
-		public DataBaseRepository(MetaContext context)
-{this.context = context;}
+	    public DataBaseRepository(MetaContext context)
+	    {
+	        this.context = context;
+	    }
 
 		public async Task<DataBase> GetAsync(int id)
 			=> await context.DataBases.FindAsync(id);
 
-		public async Task<IEnumerable<DataBase>> FindAsync(Expression<Func<DataBase, bool>> predicate)
+	    public DataBase Get(int id)
+	        => context.DataBases.Find(id);
+
+        public async Task<IEnumerable<DataBase>> FindAsync(Expression<Func<DataBase, bool>> predicate)
 			=> await context.DataBases.Where(predicate).ToListAsync();
 
 		public async Task<DataBase> CreateAsync(DataBase item)

@@ -63,7 +63,7 @@
     <Compile Include="Interfaces\IPositionUnitOfWork.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\DatabaseRepository.cs" />
+    <Compile Include="Repositories\MetaRepository.cs" />
     <Compile Include="Repositories\PositionRepository.cs" />
     <Compile Include="Repositories\ConnectionDetailsRepository.cs" />
     <Compile Include="Repositories\UOW\MetaUnitOfWork.cs" />

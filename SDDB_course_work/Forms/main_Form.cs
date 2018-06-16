@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-
+using BLL.Services;
 using DAL.EF;
 
 namespace Forms
@@ -15,7 +15,13 @@ namespace Forms
         public main_Form()
         {
             InitializeComponent();
-            context = new MetaContext("Meta Context");
+            //context = new MetaContext("Meta Context");
+
+            var ms = new MetaService(
+                @"Data source=(localdb)\MSSQLLocalDB;AttachDbFilename=C:\dbs\cafedb.mdf;Integrated Security=True;");
+            var l = ms.GetAllAsync();
+            l.Wait();
+
         }
 
         private void cafe_button_Click(object sender, EventArgs e)
