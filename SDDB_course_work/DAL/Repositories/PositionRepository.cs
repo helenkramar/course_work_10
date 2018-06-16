@@ -26,20 +26,29 @@ namespace DAL.Repositories
 
         public async Task<Position> CreateAsync(Position item)
         {
-            var pos = await context.Positions.FirstOrDefaultAsync(p => p.Name.Equals(item.Name) && p.Cost.Equals(item.Cost));
-            if (pos != null)
-            {
-                pos.Amount += item.Amount;
+            //var pos = await context.Positions.FirstOrDefaultAsync(p => p.Name.Equals(item.Name) && p.Cost.Equals(item.Cost));
+            //if (pos != null)
+            //{
+            //    pos.Amount += item.Amount;
 
-                context.Entry(pos).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-            else
-            {
+            //    context.Entry(pos).State = EntityState.Modified;
+            //    context.SaveChanges();
+            //}
+            //else
+            //{
+            //    context.Positions.Add(item);
+            //    context.SaveChanges();
+            //}
+            //return item;
+
+            var res = await Task.Factory.StartNew(() => {
                 context.Positions.Add(item);
                 context.SaveChanges();
-            }
-            return item;
+                return item;
+            });
+
+            return res;
+            
         }
 
 

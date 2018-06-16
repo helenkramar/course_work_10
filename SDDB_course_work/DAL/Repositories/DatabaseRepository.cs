@@ -27,13 +27,21 @@ namespace DAL.Repositories
 		public async Task<DataBase> CreateAsync(DataBase item)
         //=> (await context.Databases.AddAsync(item)).Entity;
         {
-            var db = await context.Databases.FirstOrDefaultAsync(p => p.Name.Equals(item.Name));
-            if (db == null)
-            {
+            //var db = await context.Databases.FirstOrDefaultAsync(p => p.Name.Equals(item.Name));
+            //if (db == null)
+            //{
+            //    context.Databases.Add(item);
+            //    context.SaveChanges();
+            //}
+            //return item;
+
+            var res = await Task.Factory.StartNew(() => {
                 context.Databases.Add(item);
                 context.SaveChanges();
-            }
-            return item;
+                return item;
+            });
+
+            return res;
         }
 
 
