@@ -2,7 +2,7 @@
 
 namespace DAL.EF
 {
-    public class PositionInitializer : DropCreateDatabaseIfModelChanges<PositionContext>
+    public class PositionInitializer : DropCreateDatabaseAlways<PositionContext>
     {
         protected override void Seed(PositionContext db)
         {
