@@ -7,7 +7,7 @@ namespace DAL.Interfaces
 	public interface IMetaUnitOfWork
 	{
 		IRepository<DataBase> DatabaseRepository { get; }
-		//IRepository<ConnectionDetails> ConnectionDetailsRepository { get; }
+		IRepository<ConnectionDetails> ConnectionDetailsRepository { get; }
 
 		Task SaveAsync();
 	}
