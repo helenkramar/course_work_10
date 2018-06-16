@@ -15,6 +15,14 @@ namespace Forms
             manufactureContext = new ManufactureContext("Manufacture Context");
         }
 
+        private void LoadGrid()
+        {
+            manufacture_dataGrid.DataSource = null;
+            manufacture_dataGrid.Rows.Clear();
+            manufacture_dataGrid.Refresh();
+            manufacture_dataGrid.DataSource = ManufactureController.GetPositions(manufactureContext);
+        }
+
         private void manufacture_Form_Load(object sender, System.EventArgs e)
         {
             manufacture_dataGrid.DataSource = ManufactureController.GetPositions(manufactureContext);
@@ -38,7 +46,7 @@ namespace Forms
 
             ManufactureController.SendPositions(manufactureContext, text, amount, cost);
 
-            manufacture_dataGrid.DataSource = ManufactureController.GetPositions(manufactureContext);
+            LoadGrid();
         }
 
         private void cook_button_Click(object sender, EventArgs e)
@@ -49,16 +57,19 @@ namespace Forms
 
             ManufactureController.AddPositions(manufactureContext, text, amount, cost);
 
-            MessageBox.Show($"'{text}': {amount}");
+            LoadGrid();
         }
 
         private void manufacture_dataGrid_SelectionChanged(object sender, EventArgs e)
         {
-            var row = ((DataGridView)sender).SelectedRows[0];
+            if (((DataGridView) sender).SelectedRows.Count > 0)
+            {
+                var row = ((DataGridView)sender).SelectedRows[0];
 
-            positionsName_comboBox.SelectedItem = row.Cells[1].Value.ToString();
-            positionsAmount_textBox.Text = row.Cells[2].Value.ToString();
-            positionsCost_textBox.Text = row.Cells[3].Value.ToString();
+                positionsName_comboBox.SelectedItem = row.Cells[1].Value.ToString();
+                positionsAmount_textBox.Text = row.Cells[2].Value.ToString();
+                positionsCost_textBox.Text = row.Cells[3].Value.ToString();
+            }
         }
     }
 }

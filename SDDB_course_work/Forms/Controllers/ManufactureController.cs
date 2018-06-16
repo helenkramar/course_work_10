@@ -9,7 +9,7 @@ namespace Forms.Controllers
 {
     public static class ManufactureController
     {
-        public static List<Position> GetPositions(ManufactureContext context)
+        public static void Initialize(this ManufactureContext context)
         {
             // mock
             Position first = new Position { Name = Desserts.cake.ToString(), Amount = 4, Cost = 2.3 };
@@ -19,7 +19,10 @@ namespace Forms.Controllers
             List<Position> listPosition = new List<Position> { first, second, third };
             context.Positions.AddRange(listPosition);
             //
+        }
 
+        public static List<Position> GetPositions(this ManufactureContext context)
+        {
             return context.Positions.Local.ToList();
         }
 
@@ -28,9 +31,9 @@ namespace Forms.Controllers
             return Enum.GetNames(typeof(Desserts)).ToList();
         }
 
-        public static void AddPositions(ManufactureContext context, string name, int amount, double cost)
+        public static void AddPositions(this ManufactureContext context, string name, int amount, double cost)
         {
-            var position = context.Positions.Find(name, cost);
+            var position = context.Positions.FirstOrDefault(p => p.Name.Equals(name) && p.Cost.Equals(cost));
 
             if (position != null)
             {
@@ -53,17 +56,18 @@ namespace Forms.Controllers
             }
         }
 
-        public static void SendPositions(ManufactureContext context, string name, int amount, double cost)
+        public static void SendPositions(this ManufactureContext context, string name, int amount, double cost)
         {
             if (amount <= 0)
                 throw new ArgumentOutOfRangeException("Amount above 0!");
 
-            var position = context.Positions.Find(name, cost);
+            var position = context.Positions.FirstOrDefault(p => p.Name.Equals(name) && p.Cost.Equals(cost));
 
-            if (position != null)
+            if (position != null && position.Amount >= amount)
             {
                 position.Amount -= amount;
-                context.Entry(position).State = EntityState.Modified;
+                if (position.Amount < 0)
+                    context.Entry(position).State = EntityState.Modified;
 
                 if (position.Amount == 0)
                     context.Positions.Remove(position);
