@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-using DAL.Entities;
+﻿using DAL.Entities;
 
 namespace BLL.Infrastructure
 {
@@ -8,16 +6,11 @@ namespace BLL.Infrastructure
 	{
 		public static string Build(ConnectionDetails details)
 		{
-			var builder = new StringBuilder();
-			builder
-				.Append("Data source=")
-				.Append(details.Host)
-				.Append(";Initial Catalog=")
-				.Append(details.DatabaseName)
-				.Append(";Integrated Security=")
-				.Append(details.IntegratedSecurity);
+		    var directory = @"C:\dbs";
 
-			return builder.ToString();
+		    var builder = $@"Data source={details.Host};AttachDbFilename={directory}{details.DatabaseName};Integrated Security={details.IntegratedSecurity};";
+    
+			return builder;
 		}
 	}
 }

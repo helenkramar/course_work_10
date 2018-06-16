@@ -16,16 +16,6 @@ namespace Forms
         {
             InitializeComponent();
             context = new MetaContext("Meta Context");
-
-            var b = context.DataBases.First();
-            var details = b.ConnectionDetails;
-
-            var directory = @"C:\dbs";
-
-            connectionStr = $@"Data source={details.Host};AttachDbFilename={directory}{details.DatabaseName};Integrated Security={details.IntegratedSecurity};";
-
-            var p = new PositionContext(connectionStr);
-            var l = p.Positions.ToList();
         }
 
         private void cafe_button_Click(object sender, EventArgs e)
