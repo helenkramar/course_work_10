@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using DAL.EF;
+
 using DAL.Entities;
+
+using BLL.Services;
 
 namespace Forms.Controllers
 {
     public static class ManufactureController
     {
-        public static List<Position> GetPositions(this ManufactureContext context)
+        public static List<Position> GetPositions(this PositionService service, int dbId)
         {
-            return context.Positions.ToList();
+            return service.GetAll(dbId).ToList();
         }
 
         public static List<string> GetDesserts()
@@ -19,16 +20,15 @@ namespace Forms.Controllers
             return Enum.GetNames(typeof(Desserts)).ToList();
         }
 
-        public static void AddPositions(this ManufactureContext context, string name, int amount, double cost)
+        public static void AddPositions(this PositionService service, int dbId, string name, int amount, double cost)
         {
-            var position = context.Positions.FirstOrDefault(p => p.Name.Equals(name) && p.Cost.Equals(cost));
+            var position = ManufactureController.GetPositions(service, dbId).FirstOrDefault(p => p.Name.Equals(name) && p.Cost.Equals(cost));
 
             if (position != null)
             {
-                position.Amount += amount;
+                position.Amount += amount; 
 
-                context.Entry(position).State = EntityState.Modified;
-                context.SaveChanges();
+               service.Update(position, dbId);
             }
             else
             {
@@ -39,18 +39,15 @@ namespace Forms.Controllers
                     Cost = cost
                 };
 
-                context.Positions.Add(position);
-                context.SaveChanges();
+                service.Create(position, dbId);
             }
         }
 
-        public static void SendPositions(this ManufactureContext context, string name, int amount, double cost)
+        public static void SendPositions(this PositionService service, int dbIdFrom, int dbIdTo, string name, int amount, double cost)
         {
-            WriteOff(context, name, amount, cost);
-           
-            var cafeContext = new CafeContext("CafeContext");
-
-            cafeContext.Admission(new Position()
+            WriteOff(service, dbIdFrom, name, amount, cost);
+            
+            service.Admission(dbIdTo, new Position
             {
                 Name = name,
                 Amount = amount,
@@ -58,24 +55,20 @@ namespace Forms.Controllers
             });
         }
 
-        private static void WriteOff(ManufactureContext context, string name, int amount, double cost)
+        private static void WriteOff(PositionService service, int dbId, string name, int amount, double cost)
         {
-            if (amount <= 0)
-                throw new ArgumentOutOfRangeException("Amount above 0!");
+            var position = service.GetAll(dbId).FirstOrDefault(p => p.Name.Equals(name) && p.Cost.Equals(cost));
 
-            var position = context.Positions.FirstOrDefault(p => p.Name.Equals(name) && p.Cost.Equals(cost));
+            if(position == null)
+                return;
 
-            if (position != null && position.Amount >= amount)
+            if (position.Amount >= amount)
             {
                 position.Amount -= amount;
-                if (position.Amount < 0)
-                    context.Entry(position).State = EntityState.Modified;
-
-                if (position.Amount == 0)
-                    context.Positions.Remove(position);
-
-                context.SaveChanges();
+                service.Update(position, dbId);
             }
+            else
+                service.Delete(position.Id, dbId);
         }
     }
 }

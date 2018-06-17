@@ -17,7 +17,7 @@ namespace DAL.EF
             DataBase cafe = new DataBase
             {
                 Name = "CafeDataBase",
-                DatabaseInfo = "cafe info",
+                DatabaseInfo = "cafe 1 info",
                 ConnectionDetails = conDet1
             };
             DataBase manufacture = new DataBase

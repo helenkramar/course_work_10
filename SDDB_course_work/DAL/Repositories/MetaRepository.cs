@@ -33,16 +33,7 @@ namespace DAL.Repositories
             =>  context.DataBases.Where(predicate).ToList();
 
         public async Task<DataBase> CreateAsync(DataBase item)
-        //=> (await context.DataBases.AddAsync(item)).Entity;
         {
-            //var db = await context.Databases.FirstOrDefaultAsync(p => p.Name.Equals(item.Name));
-            //if (db == null)
-            //{
-            //    context.Databases.Add(item);
-            //    context.SaveChanges();
-            //}
-            //return item;
-
             var res = await Task.Factory.StartNew(() => {
                 context.DataBases.Add(item);
                 context.SaveChanges();
@@ -51,6 +42,7 @@ namespace DAL.Repositories
 
             return res;
         }
+
         public DataBase Create(DataBase item)
         {
             context.DataBases.Add(item);
@@ -59,11 +51,15 @@ namespace DAL.Repositories
         }
 
 
-        public async void UpdateAsync(DataBase item)
-        { throw new NotImplementedException(); }//=> context.DataBases.Update(item);
+	    public async void UpdateAsync(DataBase item)
+	    {
+	        throw new NotImplementedException();
+	    }
 
-        public void Update(DataBase item)
-        { throw new NotImplementedException(); }//=> context.DataBases.Update(item);
+	    public void Update(DataBase item)
+	    {
+	        throw new NotImplementedException();
+	    }
 
         public async void RemoveAsync(int id)
 		{

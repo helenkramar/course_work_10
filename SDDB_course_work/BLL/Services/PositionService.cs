@@ -15,10 +15,9 @@ namespace BLL.Services
 		private readonly IMetaUnitOfWork metaUow;
 		private IPositionUnitOfWork uow;
 
-        public PositionService(string connection)// => this.metaUow = metaUow;
+        public PositionService(string connection)
         {
             metaUow = new MetaUnitOfWork(connection);
-            //uow = new PositionUnitOfWork(connection);
         }
 
         public async Task<IEnumerable<Position>> GetAllAsync(int databaseId)
@@ -91,8 +90,6 @@ namespace BLL.Services
 		{
 			var connectionDetails = (await metaUow.DatabaseRepository.GetAsync(databaseId)).ConnectionDetails;
 			var connection = ConnectionBuilder.Build(connectionDetails);
-			//var builder = new DbContextOptionsBuilder()
-			//	.UseSqlServer(connection);
 			uow = new PositionUnitOfWork(connection);
 		}
 
@@ -100,8 +97,6 @@ namespace BLL.Services
         {
             var connectionDetails = (metaUow.DatabaseRepository.Get(databaseId)).ConnectionDetails;
             var connection = ConnectionBuilder.Build(connectionDetails);
-            //var builder = new DbContextOptionsBuilder()
-            //	.UseSqlServer(connection);
             uow = new PositionUnitOfWork(connection);
         }
     }

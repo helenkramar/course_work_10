@@ -34,6 +34,7 @@
             this.cook_button = new System.Windows.Forms.Button();
             this.positionsAmount_textBox = new System.Windows.Forms.TextBox();
             this.positionsCost_textBox = new System.Windows.Forms.TextBox();
+            this.cafes_comboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.manufacture_dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,11 +90,20 @@
             this.positionsCost_textBox.TabIndex = 9;
             this.positionsCost_textBox.Text = "3";
             // 
+            // cafes_comboBox
+            // 
+            this.cafes_comboBox.FormattingEnabled = true;
+            this.cafes_comboBox.Location = new System.Drawing.Point(192, 335);
+            this.cafes_comboBox.Name = "cafes_comboBox";
+            this.cafes_comboBox.Size = new System.Drawing.Size(121, 21);
+            this.cafes_comboBox.TabIndex = 10;
+            // 
             // manufacture_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 383);
+            this.Controls.Add(this.cafes_comboBox);
             this.Controls.Add(this.positionsCost_textBox);
             this.Controls.Add(this.positionsAmount_textBox);
             this.Controls.Add(this.cook_button);
@@ -117,5 +127,6 @@
         private System.Windows.Forms.Button cook_button;
         private System.Windows.Forms.TextBox positionsAmount_textBox;
         private System.Windows.Forms.TextBox positionsCost_textBox;
+        private System.Windows.Forms.ComboBox cafes_comboBox;
     }
 }

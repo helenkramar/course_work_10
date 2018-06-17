@@ -30,16 +30,7 @@ namespace DAL.Repositories
             => context.ConnectionDetails.Where(predicate).ToList();
 
         public async Task<ConnectionDetails> CreateAsync(ConnectionDetails item)
-        //=> (await context.ConnectionDetails.AddAsync(item)).Entity;
         {
-            //var db = await context.ConnectionDetails.FirstOrDefaultAsync(p => p.Id.Equals(item.Id));
-            //if (db == null)
-            //{
-            //    context.ConnectionDetails.Add(item);
-            //    context.SaveChanges();
-            //}
-            //return item;
-
             var res = await Task.Factory.StartNew(() => {
                 context.ConnectionDetails.Add(item);
                 context.SaveChanges();
@@ -49,13 +40,20 @@ namespace DAL.Repositories
             return res;
         }
 
-        public ConnectionDetails Create(ConnectionDetails item)
-        { throw new NotImplementedException(); }
+	    public ConnectionDetails Create(ConnectionDetails item)
+	    {
+	        throw new NotImplementedException();
+	    }
 
-        public async void UpdateAsync(ConnectionDetails item)
-        { throw new NotImplementedException(); }
-        public void Update(ConnectionDetails item)// => context.ConnectionDetails.Update(item);
-        { throw new NotImplementedException(); }
+	    public async void UpdateAsync(ConnectionDetails item)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    public void Update(ConnectionDetails item)
+	    {
+	        throw new NotImplementedException();
+	    }
 
         public async void RemoveAsync(int id)
 		{
@@ -73,6 +71,5 @@ namespace DAL.Repositories
                 context.ConnectionDetails.Remove(entity);
             }
         }
-
     }
 }

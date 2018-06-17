@@ -1,23 +1,29 @@
 ﻿using System;
 using System.Windows.Forms;
-using DAL.EF;
+using BLL.Services;
+
 using Forms.Controllers;
 
 namespace Forms
 {
     public partial class cafe_Form : Form
     {
-        private CafeContext cafeContext;
+        private int dbId;
+        private readonly string connectionStr;
+        private PositionService service;
 
-        public cafe_Form(string connectionStr)
+        public cafe_Form(int dbId, string conStr)
         {
-           InitializeComponent();
-           //cafeContext = new CafeContext("CafeContext");
+            InitializeComponent();
+
+            this.dbId = dbId;
+            connectionStr = conStr;
+            service = new PositionService(connectionStr);
         }
 
         private void LoadGrid()
         {
-            cafe_dataGrid.DataSource = CafeController.GetPositions(cafeContext);
+            cafe_dataGrid.DataSource = CafeController.GetPositions(service, dbId);
         }
 
         private void cafe_Form_Load(object sender, System.EventArgs e)
@@ -32,7 +38,13 @@ namespace Forms
             var text = positionsName_textBox.Text;
             var amount = Int32.Parse(positionsAmount_textBox.Text);
 
-            CafeController.SellPositions(cafeContext, text, amount);
+            if (amount < 1)
+            {
+                MessageBox.Show($"Wrong amount: '{amount}'!");
+                return;
+            }
+
+            service.SellPositions(dbId, text, amount);
 
             LoadGrid();
         }

@@ -1,53 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
-using DAL.EF;
+
 using DAL.Entities;
+
+using BLL.Services;
 
 namespace Forms.Controllers
 {
     public static class CafeController
     {
-        public static List<Position> GetPositions(this CafeContext context)
+        public static List<Position> GetPositions(this PositionService service, int dbId)
         {
-            return context.Positions.ToList();
+            return service.GetAll(dbId).ToList();
         }
 
-        public static void Admission(this CafeContext context, Position position)
+        public static void Admission(this PositionService service, int dbId, Position position)
         {
-            var pos = context.Positions.FirstOrDefault(p => p.Name.Equals(position.Name) && p.Cost.Equals(position.Cost));
+            var pos = service.GetAll(dbId)
+                .FirstOrDefault(p => p.Name.Equals(position.Name) && p.Cost.Equals(position.Cost));
+
             if (pos != null)
             {
                 pos.Amount += position.Amount;
 
-                context.Entry(pos).State = EntityState.Modified;
-                context.SaveChanges();
+                service.Update(pos, dbId);
             }
             else
-            {
-                context.Positions.Add(position);
-                context.SaveChanges();
-            }
+                service.Create(position, dbId);
         }
 
-        public static void SellPositions(this CafeContext context, string name, int amount)
+        public static void SellPositions(this PositionService service, int dbId, string name, int amount)
         {
-            if (amount <= 0)
-                throw new ArgumentOutOfRangeException("Amount above 0!");
+            var position = service.GetAll(dbId).FirstOrDefault(p => p.Name.Equals(name));
 
-            var position = context.Positions.FirstOrDefault(p => p.Name.Equals(name));
+            if (position == null)
+                return;
 
-            if (position != null && position.Amount >= amount)
+            if (position.Amount >= amount)
             {
                 position.Amount -= amount;
-                if (position.Amount < 0)
-                    context.Entry(position).State = EntityState.Modified;
+                if (position.Amount > 0)
+                    service.Update(position, dbId);
 
                 if (position.Amount == 0)
-                    context.Positions.Remove(position);
-
-                context.SaveChanges();
+                    service.Delete(position.Id, dbId);
             }
         }
     }
