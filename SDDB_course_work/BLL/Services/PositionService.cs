@@ -25,7 +25,7 @@ namespace dataProcessing.Services
 		{
 			await GetContextAsync(databaseId);
 
-			return await uow.PositionRepository.FindAsync(emp => true);
+			return await uow.PositionRepository.FindAsync(pos => true);
 		}
 
         public IEnumerable<Position> GetAll(int databaseId)

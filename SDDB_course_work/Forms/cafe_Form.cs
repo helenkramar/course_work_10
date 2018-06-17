@@ -9,10 +9,10 @@ namespace Forms
     {
         private CafeContext cafeContext;
 
-        public cafe_Form()
+        public cafe_Form(string connectionStr)
         {
            InitializeComponent();
-           cafeContext = new CafeContext("CafeContext");
+           //cafeContext = new CafeContext("CafeContext");
         }
 
         private void LoadGrid()

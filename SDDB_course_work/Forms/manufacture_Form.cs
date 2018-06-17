@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using dataProcessing.Services;
 using Forms.Controllers;
 
 using DAL.EF;
@@ -10,10 +11,10 @@ namespace Forms
     {
         private ManufactureContext manufactureContext;
 
-        public manufacture_Form()
+        public manufacture_Form(string connectionStr)
         {
             InitializeComponent();
-            manufactureContext = new ManufactureContext("Manufacture Context");
+            var service = new PositionService(connectionStr);
         }
 
         private void LoadGrid()
