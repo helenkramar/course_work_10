@@ -3,18 +3,18 @@ using System.Linq;
 
 using DAL.Entities;
 
-using BLL.Services;
+using Forms.PositionWCF;
 
 namespace Forms.Controllers
 {
     public static class CafeController
     {
-        public static List<Position> GetPositions(this PositionService service, int dbId)
+        public static List<PositionModel> GetPositions(this WcfPositionServiceClient service, int dbId)
         {
             return service.GetAll(dbId).ToList();
         }
 
-        public static void Admission(this PositionService service, int dbId, Position position)
+        public static void Admission(this WcfPositionServiceClient service, int dbId, PositionModel position)
         {
             var pos = service.GetAll(dbId)
                 .FirstOrDefault(p => p.Name.Equals(position.Name) && p.Cost.Equals(position.Cost));
@@ -29,7 +29,7 @@ namespace Forms.Controllers
                 service.Create(position, dbId);
         }
 
-        public static void SellPositions(this PositionService service, int dbId, string name, int amount)
+        public static void SellPositions(this WcfPositionServiceClient service, int dbId, string name, int amount)
         {
             var position = service.GetAll(dbId).FirstOrDefault(p => p.Name.Equals(name));
 

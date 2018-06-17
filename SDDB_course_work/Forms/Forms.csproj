@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,6 +76,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\MetaWCF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PositionWCF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="cafe_Form.resx">
       <DependentUpon>cafe_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +114,32 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\MetaWCF\Forms.MetaWCF.DataBaseModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MetaWCF\service.wsdl" />
+    <None Include="Service References\MetaWCF\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MetaWCF\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MetaWCF\WcfService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PositionWCF\Forms.PositionWCF.PositionModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PositionWCF\service.wsdl" />
+    <None Include="Service References\PositionWCF\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PositionWCF\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PositionWCF\WcfService.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -115,6 +153,37 @@
       <Project>{b0032bbb-631f-4b84-9298-addbd81038e8}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MetaWCF\" />
+    <WCFMetadataStorage Include="Service References\PositionWCF\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MetaWCF\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MetaWCF\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MetaWCF\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PositionWCF\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PositionWCF\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PositionWCF\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

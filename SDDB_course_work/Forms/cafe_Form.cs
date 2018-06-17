@@ -4,13 +4,15 @@ using BLL.Services;
 
 using Forms.Controllers;
 
+using Forms.PositionWCF;
+
 namespace Forms
 {
     public partial class cafe_Form : Form
     {
         private int dbId;
         private readonly string connectionStr;
-        private PositionService service;
+        private WcfPositionServiceClient service;
 
         public cafe_Form(int dbId, string conStr)
         {
@@ -18,7 +20,7 @@ namespace Forms
 
             this.dbId = dbId;
             connectionStr = conStr;
-            service = new PositionService(connectionStr);
+            service = new WcfPositionServiceClient(connectionStr);
         }
 
         private void LoadGrid()

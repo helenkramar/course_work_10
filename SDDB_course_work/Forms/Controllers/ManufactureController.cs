@@ -4,13 +4,13 @@ using System.Linq;
 
 using DAL.Entities;
 
-using BLL.Services;
+using Forms.PositionWCF;
 
 namespace Forms.Controllers
 {
     public static class ManufactureController
     {
-        public static List<Position> GetPositions(this PositionService service, int dbId)
+        public static List<PositionModel> GetPositions(this WcfPositionServiceClient service, int dbId)
         {
             return service.GetAll(dbId).ToList();
         }
@@ -20,7 +20,7 @@ namespace Forms.Controllers
             return Enum.GetNames(typeof(Desserts)).ToList();
         }
 
-        public static void AddPositions(this PositionService service, int dbId, string name, int amount, double cost)
+        public static void AddPositions(this WcfPositionServiceClient service, int dbId, string name, int amount, double cost)
         {
             var position = ManufactureController.GetPositions(service, dbId).FirstOrDefault(p => p.Name.Equals(name) && p.Cost.Equals(cost));
 
@@ -32,7 +32,7 @@ namespace Forms.Controllers
             }
             else
             {
-                position = new Position
+                position = new PositionModel
                 {
                     Name = name,
                     Amount = amount,
@@ -43,11 +43,11 @@ namespace Forms.Controllers
             }
         }
 
-        public static void SendPositions(this PositionService service, int dbIdFrom, int dbIdTo, string name, int amount, double cost)
+        public static void SendPositions(this WcfPositionServiceClient service, int dbIdFrom, int dbIdTo, string name, int amount, double cost)
         {
             WriteOff(service, dbIdFrom, name, amount, cost);
             
-            service.Admission(dbIdTo, new Position
+            service.Admission(dbIdTo, new PositionModel
             {
                 Name = name,
                 Amount = amount,
@@ -55,7 +55,7 @@ namespace Forms.Controllers
             });
         }
 
-        private static void WriteOff(PositionService service, int dbId, string name, int amount, double cost)
+        private static void WriteOff(WcfPositionServiceClient service, int dbId, string name, int amount, double cost)
         {
             var position = service.GetAll(dbId).FirstOrDefault(p => p.Name.Equals(name) && p.Cost.Equals(cost));
 

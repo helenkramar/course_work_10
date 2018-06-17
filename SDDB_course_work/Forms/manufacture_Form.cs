@@ -5,13 +5,15 @@ using Forms.Controllers;
 
 using BLL.Services;
 
+using Forms.PositionWCF;
+
 namespace Forms
 {
     public partial class manufacture_Form : Form
     {
         private int dbId;
         private readonly string connectionStr;
-        private PositionService service;
+        private WcfPositionServiceClient service;
 
         public manufacture_Form(int dbId, string conStr)
         {
@@ -19,7 +21,7 @@ namespace Forms
 
             this.dbId = dbId;
             connectionStr = conStr;
-            service = new PositionService(connectionStr);
+            service = new WcfPositionServiceClient();
         }
 
         private void LoadGrid()
@@ -102,6 +104,11 @@ namespace Forms
                 positionsAmount_textBox.Text = row.Cells[2].Value.ToString();
                 positionsCost_textBox.Text = row.Cells[3].Value.ToString();
             }
+        }
+
+        private void manufacture_Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            service.Close();
         }
     }
 }
