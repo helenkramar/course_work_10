@@ -13,12 +13,12 @@ using DAL.Entities;
 namespace WcfService
 {
     
-    public class WcfService1 : IWcfService1
+    public class WcfMetaService : IWcfMetaService
     {
         private readonly MetaService serv;
         IMapper iMapper;
 
-        public WcfService1()
+        public WcfMetaService()
         {
             serv = new MetaService(@"Data source=(localdb)\MSSQLLocalDB;AttachDbFilename=C:\dbs\cafedb.mdf;Integrated Security=True;");
             var config = new MapperConfiguration(cfg => {
@@ -32,7 +32,7 @@ namespace WcfService
         public IEnumerable<DataBaseModel> GetAll() =>
              iMapper.Map<IEnumerable<DataBase>, IEnumerable<DataBaseModel>>(serv.GetAll());
 
-        // test method of WcfService1
+        // test method of WcfMetaService
         public string GetData1(int value)
         {
             return string.Format("You entered: {0}", value);

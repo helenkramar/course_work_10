@@ -107,49 +107,49 @@ namespace ConsoleClient2.SecondWcf {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SecondWcf.IWcfService2")]
-    public interface IWcfService2 {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SecondWcf.IWcfPositionService")]
+    public interface IWcfPositionService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfService2/GetData2", ReplyAction="http://tempuri.org/IWcfService2/GetData2Response")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfPositionService/GetData2", ReplyAction="http://tempuri.org/IWcfPositionService/GetData2Response")]
         string GetData2(int value);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfService2/GetAll", ReplyAction="http://tempuri.org/IWcfService2/GetAllResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfPositionService/GetAll", ReplyAction="http://tempuri.org/IWcfPositionService/GetAllResponse")]
         ConsoleClient2.SecondWcf.PositionModel[] GetAll(int databaseId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfService2/Create", ReplyAction="http://tempuri.org/IWcfService2/CreateResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfPositionService/Create", ReplyAction="http://tempuri.org/IWcfPositionService/CreateResponse")]
         ConsoleClient2.SecondWcf.PositionModel Create(ConsoleClient2.SecondWcf.PositionModel entity, int databaseId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfService2/Update", ReplyAction="http://tempuri.org/IWcfService2/UpdateResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfPositionService/Update", ReplyAction="http://tempuri.org/IWcfPositionService/UpdateResponse")]
         void Update(ConsoleClient2.SecondWcf.PositionModel entity, int databaseId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfService2/Delete", ReplyAction="http://tempuri.org/IWcfService2/DeleteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfPositionService/Delete", ReplyAction="http://tempuri.org/IWcfPositionService/DeleteResponse")]
         void Delete(int employeeId, int databaseId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IWcfService2Channel : ConsoleClient2.SecondWcf.IWcfService2, System.ServiceModel.IClientChannel {
+    public interface IWcfPositionServiceChannel : ConsoleClient2.SecondWcf.IWcfPositionService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WcfService2Client : System.ServiceModel.ClientBase<ConsoleClient2.SecondWcf.IWcfService2>, ConsoleClient2.SecondWcf.IWcfService2 {
+    public partial class WcfPositionServiceClient : System.ServiceModel.ClientBase<ConsoleClient2.SecondWcf.IWcfPositionService>, ConsoleClient2.SecondWcf.IWcfPositionService {
         
-        public WcfService2Client() {
+        public WcfPositionServiceClient() {
         }
         
-        public WcfService2Client(string endpointConfigurationName) : 
+        public WcfPositionServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public WcfService2Client(string endpointConfigurationName, string remoteAddress) : 
+        public WcfPositionServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public WcfService2Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public WcfPositionServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public WcfService2Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public WcfPositionServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

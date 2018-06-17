@@ -10,12 +10,12 @@ using DAL.Entities;
 
 namespace WcfService
 {
-    public class WcfService2 : IWcfService2
+    public class WcfPositionService : IWcfPositionService
     {
         private readonly PositionService serv;
         IMapper iMapper;
 
-        public WcfService2()
+        public WcfPositionService()
         {
             serv = new PositionService(@"Data source=(localdb)\MSSQLLocalDB;AttachDbFilename=C:\dbs\cafedb.mdf;Integrated Security=True;");
             var config = new MapperConfiguration(cfg => {

@@ -13,14 +13,14 @@ namespace ConsoleClient2
         static void Main(string[] args)
         {
             
-            WcfService1Client cl1 = new WcfService1Client();
+            WcfMetaServiceClient cl1 = new WcfMetaServiceClient();
             Console.WriteLine(cl1.GetData1(45));
             IEnumerable<DataBaseModel> dbs = cl1.GetAll();
             dbs = null;
             dbs = cl1.GetAll();
             cl1.Close();
 
-            WcfService2Client cl2 = new WcfService2Client();
+            WcfPositionServiceClient cl2 = new WcfPositionServiceClient();
             Console.WriteLine(cl2.GetData2(88));
             IEnumerable<PositionModel> pos = cl2.GetAll(2);
             cl2.Create(new PositionModel() { Name = "brbr", Amount = 10, Cost = 5.2 }, 2);

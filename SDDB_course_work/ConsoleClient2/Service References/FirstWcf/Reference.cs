@@ -91,40 +91,40 @@ namespace ConsoleClient2.FirstWcf {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FirstWcf.IWcfService1")]
-    public interface IWcfService1 {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FirstWcf.IWcfMetaService")]
+    public interface IWcfMetaService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfService1/GetData1", ReplyAction="http://tempuri.org/IWcfService1/GetData1Response")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfMetaService/GetData1", ReplyAction="http://tempuri.org/IWcfMetaService/GetData1Response")]
         string GetData1(int value);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfService1/GetAll", ReplyAction="http://tempuri.org/IWcfService1/GetAllResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfMetaService/GetAll", ReplyAction="http://tempuri.org/IWcfMetaService/GetAllResponse")]
         ConsoleClient2.FirstWcf.DataBaseModel[] GetAll();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IWcfService1Channel : ConsoleClient2.FirstWcf.IWcfService1, System.ServiceModel.IClientChannel {
+    public interface IWcfMetaServiceChannel : ConsoleClient2.FirstWcf.IWcfMetaService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WcfService1Client : System.ServiceModel.ClientBase<ConsoleClient2.FirstWcf.IWcfService1>, ConsoleClient2.FirstWcf.IWcfService1 {
+    public partial class WcfMetaServiceClient : System.ServiceModel.ClientBase<ConsoleClient2.FirstWcf.IWcfMetaService>, ConsoleClient2.FirstWcf.IWcfMetaService {
         
-        public WcfService1Client() {
+        public WcfMetaServiceClient() {
         }
         
-        public WcfService1Client(string endpointConfigurationName) : 
+        public WcfMetaServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public WcfService1Client(string endpointConfigurationName, string remoteAddress) : 
+        public WcfMetaServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public WcfService1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public WcfMetaServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public WcfService1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public WcfMetaServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

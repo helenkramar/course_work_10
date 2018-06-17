@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace WcfService
 {
     [ServiceContract]
-    public interface IWcfService2
+    public interface IWcfPositionService
     {
         [OperationContract]
         string GetData2(int value);

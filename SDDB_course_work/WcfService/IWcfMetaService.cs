@@ -9,7 +9,7 @@ using System.Text;
 namespace WcfService
 {
     [ServiceContract]
-    public interface IWcfService1
+    public interface IWcfMetaService
     {
         [OperationContract]
         string GetData1(int value);
