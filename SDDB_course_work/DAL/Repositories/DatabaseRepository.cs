@@ -50,7 +50,11 @@ namespace DAL.Repositories
             return res;
         }
         public DataBase Create(DataBase item)
-        { throw new NotImplementedException(); }
+        {
+            context.DataBases.Add(item);
+            context.SaveChanges();
+            return item;
+        }
 
 
         public async void UpdateAsync(DataBase item)

@@ -60,7 +60,11 @@ namespace DAL.Repositories
         }
 
         public Position Create(Position item)
-        { throw new NotImplementedException(); }
+        {
+            context.Positions.Add(item);
+            context.SaveChanges();
+            return item;
+        }
 
         //public async Task<Position> CreateAsync(Position item)
         //	=> (await context.Positions.AddAsync(item)).Entity;
@@ -69,7 +73,17 @@ namespace DAL.Repositories
         { throw new NotImplementedException(); }
 
         public void Update(Position item)
-        { throw new NotImplementedException(); }//=> context.Positions.Update(item);
+        {
+            var entity = context.Positions.Find(item.Id);
+            if (entity != null)
+            { 
+                entity.Amount = item.Amount;
+                entity.Cost = item.Cost;
+
+                context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+                
+            }
+        }//=> context.Positions.Update(item);
 
 		public async void RemoveAsync(int id)
 		{
@@ -77,11 +91,19 @@ namespace DAL.Repositories
 			if (entity != null)
 			{
 				context.Positions.Remove(entity);
-			}			
+                
+            }			
 		}
 
         public void Remove(int id)
-        { throw new NotImplementedException(); }
+        {
+            var entity = context.Positions.Find(id);
+            if (entity != null)
+            {
+                context.Positions.Remove(entity);
+                
+            }
+        }
 
 
     }

@@ -9,5 +9,6 @@ namespace DAL.Interfaces
 		IRepository<Position> PositionRepository { get; }
 
 		Task SaveAsync();
-	}
+        void Save();
+    }
 }

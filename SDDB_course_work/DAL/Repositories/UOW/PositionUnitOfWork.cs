@@ -19,5 +19,6 @@ namespace DAL.Repositories
 		public IRepository<Position> PositionRepository { get; }		
 
 		public async Task SaveAsync() => await context.SaveChangesAsync();
-	}
+        public void Save() => context.SaveChanges();
+    }
 }

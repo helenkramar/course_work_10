@@ -66,7 +66,13 @@ namespace DAL.Repositories
 			}
 		}
         public  void Remove(int id)
-        { throw new NotImplementedException(); }
+        {
+            var entity = context.ConnectionDetails.Find(id);
+            if (entity != null)
+            {
+                context.ConnectionDetails.Remove(entity);
+            }
+        }
 
     }
 }

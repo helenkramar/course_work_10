@@ -28,7 +28,14 @@ namespace dataProcessing.Services
 			return await uow.PositionRepository.FindAsync(emp => true);
 		}
 
-		public async Task<Position> CreateAsync(Position entity, int databaseId)
+        public IEnumerable<Position> GetAll(int databaseId)
+        {
+            GetContext(databaseId);
+
+            return uow.PositionRepository.Find(emp => true);
+        }
+
+        public async Task<Position> CreateAsync(Position entity, int databaseId)
 		{
 			await GetContextAsync(databaseId);
 
@@ -38,20 +45,46 @@ namespace dataProcessing.Services
 			return result;
 		}
 
-		public async Task Update(Position entity, int databaseId)
+        public Position Create(Position entity, int databaseId)
+        {
+            GetContext(databaseId);
+
+            var result = uow.PositionRepository.Create(entity);
+            uow.Save();
+
+            return result;
+        }
+
+        public async Task UpdateAsync(Position entity, int databaseId)
+        {
+            await GetContextAsync(databaseId);
+
+            uow.PositionRepository.Update(entity);
+            await uow.SaveAsync();
+        }
+
+        public void Update(Position entity, int databaseId)
 		{
-			await GetContextAsync(databaseId);
+			GetContext(databaseId);
 
 			uow.PositionRepository.Update(entity);
-			await uow.SaveAsync();
+			uow.Save();
 		}
 
-		public async Task Delete(int employeeId, int databaseId)
+        public async Task DeleteAsync(int employeeId, int databaseId)
+        {
+            await GetContextAsync(databaseId);
+
+            uow.PositionRepository.Remove(employeeId);
+            await uow.SaveAsync();
+        }
+
+        public void Delete(int employeeId, int databaseId)
 		{
-			await GetContextAsync(databaseId);
+			GetContext(databaseId);
 
 			uow.PositionRepository.Remove(employeeId);
-			await uow.SaveAsync();
+			uow.Save();
 		}
 
 		private async Task GetContextAsync(int databaseId)
@@ -62,5 +95,14 @@ namespace dataProcessing.Services
 			//	.UseSqlServer(connection);
 			uow = new PositionUnitOfWork(connection);
 		}
-	}
+
+        private void GetContext(int databaseId)
+        {
+            var connectionDetails = (metaUow.DatabaseRepository.Get(databaseId)).ConnectionDetails;
+            var connection = ConnectionBuilder.Build(connectionDetails);
+            //var builder = new DbContextOptionsBuilder()
+            //	.UseSqlServer(connection);
+            uow = new PositionUnitOfWork(connection);
+        }
+    }
 }
