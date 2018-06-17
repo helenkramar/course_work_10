@@ -8,17 +8,16 @@ using DAL.Entities;
 using DAL.Interfaces;
 using DAL.Repositories;
 
-namespace dataProcessing.Services
+namespace BLL.Services
 {
 	public class PositionService : IPositionService
 	{
 		private readonly IMetaUnitOfWork metaUow;
 		private IPositionUnitOfWork uow;
 
-        public PositionService(string connection)// => this.metaUow = metaUow;
+        public PositionService(string connection)
         {
             metaUow = new MetaUnitOfWork(connection);
-            //uow = new PositionUnitOfWork(connection);
         }
 
         public async Task<IEnumerable<Position>> GetAllAsync(int databaseId)

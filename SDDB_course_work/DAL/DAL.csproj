@@ -47,10 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EF\CafeContext.cs" />
-    <Compile Include="EF\CafeInitializer.cs" />
-    <Compile Include="EF\ManufactureContext.cs" />
-    <Compile Include="EF\ManufactureInitializer.cs" />
     <Compile Include="EF\MetaInitializer.cs" />
     <Compile Include="EF\PositionInitializer.cs" />
     <Compile Include="Entities\ConnectionDetails.cs" />
