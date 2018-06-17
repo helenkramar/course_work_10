@@ -23,7 +23,7 @@ namespace WcfService
          void Update(PositionModel entity, int databaseId);
 
         [OperationContract]
-        void Delete(int employeeId, int databaseId);
+        void Delete(int entityId, int databaseId);
 
     }
 

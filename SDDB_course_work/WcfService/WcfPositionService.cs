@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AutoMapper;
 
 using BLL.Services;
@@ -26,24 +22,26 @@ namespace WcfService
             });
             iMapper = config.CreateMapper();
         }
-
         
-        public IEnumerable<PositionModel> GetAll(int databaseId) =>
-             iMapper.Map<IEnumerable<Position>, IEnumerable<PositionModel>>(serv.GetAll(databaseId));
+        public IEnumerable<PositionModel> GetAll(int databaseId)
+            => iMapper.Map<IEnumerable<Position>, IEnumerable<PositionModel>>(serv.GetAll(databaseId));
 
-        public PositionModel Create(PositionModel entity, int databaseId) =>
-        iMapper.Map<Position, PositionModel>(serv.Create(iMapper.Map<PositionModel, Position>(entity), databaseId));
+        public PositionModel Create(PositionModel entity, int databaseId)
+            => iMapper.Map<Position, PositionModel>(serv.Create(iMapper.Map<PositionModel, Position>(entity), databaseId));
 
         public void Update(PositionModel entity, int databaseId)
-        { serv.Update(iMapper.Map<PositionModel, Position>(entity), databaseId); }
+        {
+            serv.Update(iMapper.Map<PositionModel, Position>(entity), databaseId);
+        }
 
-        public void Delete(int employeeId, int databaseId)
-        { serv.Delete(employeeId, databaseId); }
+        public void Delete(int entityId, int databaseId)
+        {
+            serv.Delete(entityId, databaseId);
+        }
 
         public string GetData2(int value)
         {
             return string.Format("You entered: {0}", value);
         }
-
     }
 }

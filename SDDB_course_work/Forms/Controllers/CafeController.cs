@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using DAL.Entities;
-
 using Forms.PositionWCF;
 
 namespace Forms.Controllers
