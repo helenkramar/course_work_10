@@ -2,11 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
+using AutoMapper;
+
+using BLL.Services;
+using DAL.Entities;
 
 namespace WcfService
 {
     public class WcfService2 : IWcfService2
     {
+        private readonly PositionService serv;
+        IMapper iMapper;
+
+        public WcfService2()
+        {
+            serv = new PositionService(@"Data source=(localdb)\MSSQLLocalDB;AttachDbFilename=C:\dbs\cafedb.mdf;Integrated Security=True;");
+            var config = new MapperConfiguration(cfg => {
+
+                cfg.CreateMap<Position, PositionModel>();
+                cfg.CreateMap<PositionModel, Position>();
+
+            });
+            iMapper = config.CreateMapper();
+        }
+
+        
+        public IEnumerable<PositionModel> GetAll(int databaseId) =>
+             iMapper.Map<IEnumerable<Position>, IEnumerable<PositionModel>>(serv.GetAll(databaseId));
+
+        public PositionModel Create(PositionModel entity, int databaseId) =>
+        iMapper.Map<Position, PositionModel>(serv.Create(iMapper.Map<PositionModel, Position>(entity), databaseId));
+
+        public void Update(PositionModel entity, int databaseId)
+        { serv.Update(iMapper.Map<PositionModel, Position>(entity), databaseId); }
+
+        public void Delete(int employeeId, int databaseId)
+        { serv.Delete(employeeId, databaseId); }
+
         public string GetData2(int value)
         {
             return string.Format("You entered: {0}", value);

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Data.Entity;
 
 using DAL.EF;
@@ -7,7 +8,7 @@ using DAL.Interfaces;
 
 namespace DAL.Repositories
 {
-	public sealed class MetaUnitOfWork : IMetaUnitOfWork
+	public sealed class MetaUnitOfWork : IMetaUnitOfWork, IDisposable
 	{
 		private readonly MetaContext context;
         
@@ -29,5 +30,15 @@ namespace DAL.Repositories
 
 		public async Task SaveAsync() => await context.SaveChangesAsync();
         public void Save() => context.SaveChanges();
+
+        public void Dispose()
+        {
+            context.Dispose();
+        }
+
+        ~MetaUnitOfWork()
+        {
+            Dispose();
+        }
     }
 }

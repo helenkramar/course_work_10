@@ -11,5 +11,7 @@ namespace DAL.Interfaces
 
 		Task SaveAsync();
         void Save();
+
+        void Dispose();
     }
 }

@@ -8,7 +8,7 @@ using DAL.Entities;
 using DAL.Interfaces;
 using DAL.Repositories;
 
-namespace dataProcessing.Services
+namespace BLL.Services
 {
 	public class PositionService : IPositionService
 	{

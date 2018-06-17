@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfService" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IWcfService2_GetData2_InputMessage">
@@ -12,16 +13,92 @@
   <wsdl:message name="IWcfService2_GetData2_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetData2Response" />
   </wsdl:message>
+  <wsdl:message name="IWcfService2_GetAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll" />
+  </wsdl:message>
+  <wsdl:message name="IWcfService2_GetAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcfService2_Create_InputMessage">
+    <wsdl:part name="parameters" element="tns:Create" />
+  </wsdl:message>
+  <wsdl:message name="IWcfService2_Create_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcfService2_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="IWcfService2_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcfService2_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IWcfService2_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWcfService2">
     <wsdl:operation name="GetData2">
       <wsdl:input wsaw:Action="http://tempuri.org/IWcfService2/GetData2" message="tns:IWcfService2_GetData2_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWcfService2/GetData2Response" message="tns:IWcfService2_GetData2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfService2/GetAll" message="tns:IWcfService2_GetAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfService2/GetAllResponse" message="tns:IWcfService2_GetAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfService2/Create" message="tns:IWcfService2_Create_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfService2/CreateResponse" message="tns:IWcfService2_Create_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfService2/Update" message="tns:IWcfService2_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfService2/UpdateResponse" message="tns:IWcfService2_Update_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfService2/Delete" message="tns:IWcfService2_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfService2/DeleteResponse" message="tns:IWcfService2_Delete_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWcfService2" type="tns:IWcfService2">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetData2">
       <soap:operation soapAction="http://tempuri.org/IWcfService2/GetData2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <soap:operation soapAction="http://tempuri.org/IWcfService2/GetAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <soap:operation soapAction="http://tempuri.org/IWcfService2/Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/IWcfService2/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IWcfService2/Delete" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

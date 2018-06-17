@@ -63,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Service References\FirstWcf\ConsoleClient2.FirstWcf.DataBaseModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\FirstWcf\service.wsdl" />
     <None Include="Service References\FirstWcf\service.xsd">
       <SubType>Designer</SubType>
@@ -70,11 +73,20 @@
     <None Include="Service References\FirstWcf\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\FirstWcf\WcfService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SecondWcf\ConsoleClient2.SecondWcf.PositionModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SecondWcf\service.wsdl" />
     <None Include="Service References\SecondWcf\service.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SecondWcf\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SecondWcf\WcfService.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
