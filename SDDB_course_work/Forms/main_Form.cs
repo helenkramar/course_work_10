@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using BLL.Infrastructure;
 using BLL.Services;
-using DAL.EF;
 using DAL.Entities;
 
 namespace Forms

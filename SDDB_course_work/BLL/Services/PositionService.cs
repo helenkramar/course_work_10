@@ -90,8 +90,6 @@ namespace BLL.Services
 		{
 			var connectionDetails = (await metaUow.DatabaseRepository.GetAsync(databaseId)).ConnectionDetails;
 			var connection = ConnectionBuilder.Build(connectionDetails);
-			//var builder = new DbContextOptionsBuilder()
-			//	.UseSqlServer(connection);
 			uow = new PositionUnitOfWork(connection);
 		}
 
@@ -99,8 +97,6 @@ namespace BLL.Services
         {
             var connectionDetails = (metaUow.DatabaseRepository.Get(databaseId)).ConnectionDetails;
             var connection = ConnectionBuilder.Build(connectionDetails);
-            //var builder = new DbContextOptionsBuilder()
-            //	.UseSqlServer(connection);
             uow = new PositionUnitOfWork(connection);
         }
     }

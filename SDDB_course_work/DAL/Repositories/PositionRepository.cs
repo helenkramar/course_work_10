@@ -28,35 +28,20 @@ namespace DAL.Repositories
         public async Task<IEnumerable<Position>> FindAsync(Expression<Func<Position, bool>> predicate)
             => await context.Positions.Where(predicate).ToListAsync();
 
-        public  IEnumerable<Position> Find(Expression<Func<Position, bool>> predicate)
-            =>  context.Positions.Where(predicate).ToList();
+        public IEnumerable<Position> Find(Expression<Func<Position, bool>> predicate)
+            => context.Positions.Where(predicate).ToList();
 
 
         public async Task<Position> CreateAsync(Position item)
         {
-            //var pos = await context.Positions.FirstOrDefaultAsync(p => p.Name.Equals(item.Name) && p.Cost.Equals(item.Cost));
-            //if (pos != null)
-            //{
-            //    pos.Amount += item.Amount;
-
-            //    context.Entry(pos).State = EntityState.Modified;
-            //    context.SaveChanges();
-            //}
-            //else
-            //{
-            //    context.Positions.Add(item);
-            //    context.SaveChanges();
-            //}
-            //return item;
-
-            var res = await Task.Factory.StartNew(() => {
+            var res = await Task.Factory.StartNew(() =>
+            {
                 context.Positions.Add(item);
                 context.SaveChanges();
                 return item;
             });
 
             return res;
-            
         }
 
         public Position Create(Position item)
@@ -66,34 +51,31 @@ namespace DAL.Repositories
             return item;
         }
 
-        //public async Task<Position> CreateAsync(Position item)
-        //	=> (await context.Positions.AddAsync(item)).Entity;
-
         public async void UpdateAsync(Position item)
-        { throw new NotImplementedException(); }
+        {
+            throw new NotImplementedException();
+        }
 
         public void Update(Position item)
         {
             var entity = context.Positions.Find(item.Id);
             if (entity != null)
-            { 
+            {
                 entity.Amount = item.Amount;
                 entity.Cost = item.Cost;
 
                 context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-                
             }
-        }//=> context.Positions.Update(item);
+        }
 
-		public async void RemoveAsync(int id)
-		{
-			var entity = await context.Positions.FindAsync(id);
-			if (entity != null)
-			{
-				context.Positions.Remove(entity);
-                
-            }			
-		}
+        public async void RemoveAsync(int id)
+        {
+            var entity = await context.Positions.FindAsync(id);
+            if (entity != null)
+            {
+                context.Positions.Remove(entity);
+            }
+        }
 
         public void Remove(int id)
         {
@@ -101,10 +83,7 @@ namespace DAL.Repositories
             if (entity != null)
             {
                 context.Positions.Remove(entity);
-                
             }
         }
-
-
     }
 }
