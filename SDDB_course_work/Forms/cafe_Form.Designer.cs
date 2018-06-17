@@ -88,6 +88,7 @@
             this.Controls.Add(this.cafe_dataGrid);
             this.Name = "cafe_Form";
             this.Text = "Cafe";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.cafe_Form_FormClosing);
             this.Load += new System.EventHandler(this.cafe_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cafe_dataGrid)).EndInit();
             this.ResumeLayout(false);

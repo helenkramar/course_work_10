@@ -3,24 +3,21 @@ using System.Linq;
 using System.Windows.Forms;
 using Forms.Controllers;
 
-using BLL.Services;
-
+using Forms.MetaWCF;
 using Forms.PositionWCF;
 
 namespace Forms
 {
     public partial class manufacture_Form : Form
     {
-        private int dbId;
-        private readonly string connectionStr;
-        private WcfPositionServiceClient service;
+        private readonly int dbId;
+        private readonly WcfPositionServiceClient service;
 
-        public manufacture_Form(int dbId, string conStr)
+        public manufacture_Form(int dbId)
         {
             InitializeComponent();
 
             this.dbId = dbId;
-            connectionStr = conStr;
             service = new WcfPositionServiceClient();
         }
 
@@ -41,7 +38,7 @@ namespace Forms
 
         private void LoadCafesCombobox()
         {
-            var metaService = new MetaService(connectionStr);
+            var metaService = new WcfMetaServiceClient();
             var databases = metaService.GetAll().Where(db => db.DatabaseInfo.Contains("cafe")).Select(db => db.Name).ToList();
            
             cafes_comboBox.DataSource = databases;
@@ -49,6 +46,8 @@ namespace Forms
             int index = 0;
             positionsName_comboBox.SelectedIndex = index;
             positionsName_comboBox.DisplayMember = databases[index];
+
+            metaService.Close();
         }
 
         private void manufacture_Form_Load(object sender, System.EventArgs e)
@@ -69,8 +68,9 @@ namespace Forms
             var cost = Double.Parse(positionsCost_textBox.Text);
             var cafeName = cafes_comboBox.SelectedValue.ToString();
 
-            var metaService = new MetaService(connectionStr);
+            var metaService = new WcfMetaServiceClient();
             var cafeId = metaService.GetAll().First(db => db.Name.Equals(cafeName)).Id;
+            metaService.Close();
 
             service.SendPositions(dbId, cafeId, text, amount, cost);
 
@@ -100,9 +100,9 @@ namespace Forms
             {
                 var row = ((DataGridView)sender).SelectedRows[0];
 
-                positionsName_comboBox.SelectedItem = row.Cells[1].Value.ToString();
-                positionsAmount_textBox.Text = row.Cells[2].Value.ToString();
-                positionsCost_textBox.Text = row.Cells[3].Value.ToString();
+                positionsName_comboBox.SelectedItem = row.Cells["Name"].Value.ToString();
+                positionsAmount_textBox.Text = row.Cells["Amount"].Value.ToString();
+                positionsCost_textBox.Text = row.Cells["Cost"].Value.ToString();
             }
         }
 

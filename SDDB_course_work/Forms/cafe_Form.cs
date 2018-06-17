@@ -1,26 +1,24 @@
 ﻿using System;
 using System.Windows.Forms;
-using BLL.Services;
 
 using Forms.Controllers;
-
 using Forms.PositionWCF;
 
 namespace Forms
 {
     public partial class cafe_Form : Form
     {
-        private int dbId;
-        private readonly string connectionStr;
-        private WcfPositionServiceClient service;
+        private readonly int dbId;
+        private readonly WcfPositionServiceClient service;
 
-        public cafe_Form(int dbId, string conStr)
+        public cafe_Form(int dbId)
         {
             InitializeComponent();
 
             this.dbId = dbId;
-            connectionStr = conStr;
-            service = new WcfPositionServiceClient(connectionStr);
+            service = new WcfPositionServiceClient();
+
+            this.Text += $" {dbId}";
         }
 
         private void LoadGrid()
@@ -57,10 +55,15 @@ namespace Forms
             {
                 var row = ((DataGridView)sender).SelectedRows[0];
 
-                positionsName_textBox.Text = row.Cells[1].Value.ToString();
-                positionsAmount_textBox.Text = row.Cells[2].Value.ToString();
-                positionCost_textBox.Text = row.Cells[3].Value.ToString();
+                positionsName_textBox.Text = row.Cells["Name"].Value.ToString();
+                positionsAmount_textBox.Text = row.Cells["Amount"].Value.ToString();
+                positionCost_textBox.Text = row.Cells["Cost"].Value.ToString();
             }
+        }
+
+        private void cafe_Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            service.Close();
         }
     }
 }

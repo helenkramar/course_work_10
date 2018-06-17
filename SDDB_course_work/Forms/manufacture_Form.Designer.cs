@@ -111,7 +111,7 @@
             this.Controls.Add(this.send_button);
             this.Controls.Add(this.manufacture_dataGrid);
             this.Name = "manufacture_Form";
-            this.Text = "manufacture_Form";
+            this.Text = "Manufacture";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.manufacture_Form_FormClosing);
             this.Load += new System.EventHandler(this.manufacture_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.manufacture_dataGrid)).EndInit();
