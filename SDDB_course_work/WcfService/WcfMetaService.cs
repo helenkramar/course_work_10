@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using AutoMapper;
 
 using BLL.Services;
@@ -12,7 +6,6 @@ using DAL.Entities;
 
 namespace WcfService
 {
-    
     public class WcfMetaService : IWcfMetaService
     {
         private readonly MetaService serv;
@@ -24,7 +17,6 @@ namespace WcfService
             var config = new MapperConfiguration(cfg => {
 
                 cfg.CreateMap<DataBase, DataBaseModel>();
-
             });
             iMapper = config.CreateMapper();
         }
@@ -38,8 +30,6 @@ namespace WcfService
             return string.Format("You entered: {0}", value);
         }
     }
-
-    
 }
 
 

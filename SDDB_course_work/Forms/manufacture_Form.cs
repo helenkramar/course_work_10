@@ -110,5 +110,17 @@ namespace Forms
         {
             service.Close();
         }
+
+        private void amountInCafe_button_Click(object sender, EventArgs e)
+        {
+            var text = positionsName_comboBox.SelectedItem.ToString();
+            var cafeName = cafes_comboBox.SelectedValue.ToString();
+
+            var metaService = new WcfMetaServiceClient();
+            var cafeId = metaService.GetAll().First(db => db.Name.Equals(cafeName)).Id;
+            metaService.Close();
+
+            amountInCafe_textBox.Text = service.GetPositionAmount(text, cafeId).ToString();
+        }
     }
 }

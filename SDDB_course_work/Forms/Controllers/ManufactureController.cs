@@ -70,5 +70,10 @@ namespace Forms.Controllers
             else
                 service.Delete(position.Id, dbId);
         }
+
+        public static int GetAmount(this WcfPositionServiceClient service, int dbId, string name)
+        {
+            return service.GetPositionAmount(name, dbId);
+        }
     }
 }

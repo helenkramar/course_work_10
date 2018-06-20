@@ -20,11 +20,13 @@ namespace WcfService
         PositionModel Create(PositionModel entity, int databaseId);
 
         [OperationContract]
-         void Update(PositionModel entity, int databaseId);
+        void Update(PositionModel entity, int databaseId);
 
         [OperationContract]
         void Delete(int entityId, int databaseId);
 
+        [OperationContract]
+        int GetPositionAmount(string position, int databaseId);
     }
 
     [DataContract]

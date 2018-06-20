@@ -135,10 +135,16 @@ namespace Forms.PositionWCF {
         System.Threading.Tasks.Task UpdateAsync(Forms.PositionWCF.PositionModel entity, int databaseId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfPositionService/Delete", ReplyAction="http://tempuri.org/IWcfPositionService/DeleteResponse")]
-        void Delete(int employeeId, int databaseId);
+        void Delete(int entityId, int databaseId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfPositionService/Delete", ReplyAction="http://tempuri.org/IWcfPositionService/DeleteResponse")]
-        System.Threading.Tasks.Task DeleteAsync(int employeeId, int databaseId);
+        System.Threading.Tasks.Task DeleteAsync(int entityId, int databaseId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfPositionService/GetPositionAmount", ReplyAction="http://tempuri.org/IWcfPositionService/GetPositionAmountResponse")]
+        int GetPositionAmount(string position, int databaseId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfPositionService/GetPositionAmount", ReplyAction="http://tempuri.org/IWcfPositionService/GetPositionAmountResponse")]
+        System.Threading.Tasks.Task<int> GetPositionAmountAsync(string position, int databaseId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -200,12 +206,20 @@ namespace Forms.PositionWCF {
             return base.Channel.UpdateAsync(entity, databaseId);
         }
         
-        public void Delete(int employeeId, int databaseId) {
-            base.Channel.Delete(employeeId, databaseId);
+        public void Delete(int entityId, int databaseId) {
+            base.Channel.Delete(entityId, databaseId);
         }
         
-        public System.Threading.Tasks.Task DeleteAsync(int employeeId, int databaseId) {
-            return base.Channel.DeleteAsync(employeeId, databaseId);
+        public System.Threading.Tasks.Task DeleteAsync(int entityId, int databaseId) {
+            return base.Channel.DeleteAsync(entityId, databaseId);
+        }
+        
+        public int GetPositionAmount(string position, int databaseId) {
+            return base.Channel.GetPositionAmount(position, databaseId);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetPositionAmountAsync(string position, int databaseId) {
+            return base.Channel.GetPositionAmountAsync(position, databaseId);
         }
     }
 }

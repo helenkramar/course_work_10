@@ -35,6 +35,8 @@
             this.positionsAmount_textBox = new System.Windows.Forms.TextBox();
             this.positionsCost_textBox = new System.Windows.Forms.TextBox();
             this.cafes_comboBox = new System.Windows.Forms.ComboBox();
+            this.amountInCafe_button = new System.Windows.Forms.Button();
+            this.amountInCafe_textBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.manufacture_dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,11 +100,31 @@
             this.cafes_comboBox.Size = new System.Drawing.Size(121, 21);
             this.cafes_comboBox.TabIndex = 10;
             // 
+            // amountInCafe_button
+            // 
+            this.amountInCafe_button.Location = new System.Drawing.Point(317, 371);
+            this.amountInCafe_button.Name = "amountInCafe_button";
+            this.amountInCafe_button.Size = new System.Drawing.Size(93, 23);
+            this.amountInCafe_button.TabIndex = 11;
+            this.amountInCafe_button.Text = "Amount in Cafe";
+            this.amountInCafe_button.UseVisualStyleBackColor = true;
+            this.amountInCafe_button.Click += new System.EventHandler(this.amountInCafe_button_Click);
+            // 
+            // amountInCafe_textBox
+            // 
+            this.amountInCafe_textBox.Location = new System.Drawing.Point(192, 371);
+            this.amountInCafe_textBox.Name = "amountInCafe_textBox";
+            this.amountInCafe_textBox.ReadOnly = true;
+            this.amountInCafe_textBox.Size = new System.Drawing.Size(119, 20);
+            this.amountInCafe_textBox.TabIndex = 12;
+            // 
             // manufacture_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 383);
+            this.ClientSize = new System.Drawing.Size(428, 406);
+            this.Controls.Add(this.amountInCafe_textBox);
+            this.Controls.Add(this.amountInCafe_button);
             this.Controls.Add(this.cafes_comboBox);
             this.Controls.Add(this.positionsCost_textBox);
             this.Controls.Add(this.positionsAmount_textBox);
@@ -129,5 +151,7 @@
         private System.Windows.Forms.TextBox positionsAmount_textBox;
         private System.Windows.Forms.TextBox positionsCost_textBox;
         private System.Windows.Forms.ComboBox cafes_comboBox;
+        private System.Windows.Forms.Button amountInCafe_button;
+        private System.Windows.Forms.TextBox amountInCafe_textBox;
     }
 }

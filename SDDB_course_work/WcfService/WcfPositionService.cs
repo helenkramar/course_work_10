@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 
 using BLL.Services;
@@ -42,6 +43,15 @@ namespace WcfService
         public string GetData2(int value)
         {
             return string.Format("You entered: {0}", value);
+        }
+
+        public int GetPositionAmount(string position, int databaseId)
+        {
+            var c = GetAll(databaseId).Where(item => item.Name.Equals(position));
+
+            int result = 0;
+            c.ToList().ForEach((item) => { result += item.Amount;});
+            return result;
         }
     }
 }

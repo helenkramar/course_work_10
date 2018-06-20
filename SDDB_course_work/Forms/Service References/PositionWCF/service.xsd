@@ -60,7 +60,7 @@
   <xs:element name="Delete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="employeeId" type="xs:int" />
+        <xs:element minOccurs="0" name="entityId" type="xs:int" />
         <xs:element minOccurs="0" name="databaseId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -68,6 +68,21 @@
   <xs:element name="DeleteResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPositionAmount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="position" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="databaseId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPositionAmountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPositionAmountResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>
